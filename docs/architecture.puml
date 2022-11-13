@@ -1,0 +1,26 @@
+@startuml
+
+!include hazelcast-icon-black-sm.sprite.puml
+!include hazelcast-common.puml
+
+package Hazelcast #line:gray;back:fafafa {
+  HAZELCAST([Ringbuffer], Ringbuffer) #line:black;back:white
+}
+
+package "Publisher" as "App-Publisher" #line:gray;back:fafafa {
+  [publish] #line:black;back:white
+}
+
+package "Logger" as "App-Logger" #line:gray;back:fafafa {
+  [log] #line:black;back:white
+}
+
+package "Observer" as "App-Observer" #line:gray;back:fafafa {
+  [observe] #line:black;back:white
+}
+
+[publish] --> [Ringbuffer] : (1) publish event
+[log] --> [Ringbuffer] : (2.1) read event
+[observe] --> [Ringbuffer] : (2.2) read event
+
+@enduml

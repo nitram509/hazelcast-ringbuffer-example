@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/hazelcast/hazelcast-go-client"
+	"log"
 )
 
 func main() {
@@ -18,5 +19,12 @@ func main() {
 		panic(err)
 	}
 
-	println(rb.Name())
+	for sequence := int64(0); true; sequence++ {
+		item, err := rb.ReadOne(ctx, sequence)
+		if err != nil {
+			panic(err)
+		}
+		log.Printf("Received item idx=%d: %s", sequence, item)
+	}
+
 }
