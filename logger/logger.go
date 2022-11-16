@@ -19,6 +19,7 @@ func main() {
 		panic(err)
 	}
 
+	log.Println("Processing. Press CTRL+C to exit.")
 	for sequence := int64(0); true; sequence++ {
 		item, err := rb.ReadOne(ctx, sequence)
 		if err != nil {

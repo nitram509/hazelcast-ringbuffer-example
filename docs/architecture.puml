@@ -15,12 +15,12 @@ package "Logger" as "App-Logger" #line:gray;back:fafafa {
   [log] #line:black;back:white
 }
 
-package "Observer" as "App-Observer" #line:gray;back:fafafa {
-  [observe] #line:black;back:white
+package "Alerter" as "App-Alerter" #line:gray;back:fafafa {
+  [alert] #line:black;back:white
 }
 
 [publish] --> [Ringbuffer] : (1) publish event
 [log] --> [Ringbuffer] : (2.1) read event
-[observe] --> [Ringbuffer] : (2.2) read event
+[alert] --> [Ringbuffer] : (2.2) read event
 
 @enduml
